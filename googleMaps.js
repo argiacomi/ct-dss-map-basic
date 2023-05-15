@@ -1,4 +1,4 @@
-const apiKey = process.env.VITE_GOOGLE_MAPS_API_KEY;
+const apiKey = process.env.GOOGLE_MAPS_API_KEY;
 const center = { lat: 41.5, lng: -72.7575 };
 const zoom = 10;
 const locations = [
