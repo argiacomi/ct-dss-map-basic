@@ -391,13 +391,6 @@ async function initMap() {
           </div>
           <span class="map-office-link-container">
             <a
-              href="/"
-              class="map-office-link"
-            >
-              View details
-            </a>
-            <span class="vertical-separator"></span>
-            <a
               href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${location.place_id}"
               target="_blank"
               rel="noreferrer"
