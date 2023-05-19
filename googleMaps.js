@@ -1,4 +1,4 @@
-const apiKey = 'YOUR_API_KEY';
+const apiKey = process.env.GOOGLE_MAPS_API_KEY;
 const center = { lat: 41.5, lng: -72.7575 };
 const zoom = 10;
 const locations = [
@@ -290,7 +290,8 @@ const loadGoogleMaps = async (options) => {
     mainScript.nonce = document.querySelector('script[nonce]')?.nonce || '';
 
     const clusterScript = document.createElement('script');
-    clusterScript.src = 'https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js';
+    clusterScript.src =
+      'https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js';
 
     const onError = (error) => {
       if (config.retries > 0) {
@@ -359,8 +360,14 @@ function getMapOptions(center, zoom) {
 async function initMap() {
   await loadGoogleMaps({ key: apiKey, v: 'weekly' });
 
-  const map = new google.maps.Map(document.getElementById('map'), getMapOptions(center, zoom));
-  const bounds = new google.maps.LatLngBounds(new google.maps.LatLng(40.950943, -73.727775), new google.maps.LatLng(42.050587, -71.787239));
+  const map = new google.maps.Map(
+    document.getElementById('map'),
+    getMapOptions(center, zoom)
+  );
+  const bounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(40.950943, -73.727775),
+    new google.maps.LatLng(42.050587, -71.787239)
+  );
 
   map.addListener('center_changed', () => {
     const currentCenter = map.getCenter();
@@ -372,7 +379,9 @@ async function initMap() {
   const infoWindow = new google.maps.InfoWindow();
 
   const handleMarkerClick = (location, marker) => {
-    const directions = new URL(`https://www.google.com/maps/dir//${location.geometry.location.lat},${location.geometry.location.lng}`);
+    const directions = new URL(
+      `https://www.google.com/maps/dir//${location.geometry.location.lat},${location.geometry.location.lng}`
+    );
     infoWindow.setContent(`
       <div class="map-card">
           <a
@@ -418,7 +427,12 @@ async function initMap() {
     return marker;
   });
 
-  const markerCluster = new markerClusterer.MarkerClusterer({ map, markers, imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+  const markerCluster = new markerClusterer.MarkerClusterer({
+    map,
+    markers,
+    imagePath:
+      'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+  });
 }
 
 window.onload = initMap;
