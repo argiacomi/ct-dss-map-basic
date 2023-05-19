@@ -1,8 +1,15 @@
 {
   "name": "ct-dss-map-basic",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
+  "type": "module",
   "author": "Drew Giacomi",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.3.2"
+  }
 }
