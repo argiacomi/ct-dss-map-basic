@@ -3,7 +3,7 @@ const center = { lat: 41.5, lng: -72.7575 };
 const zoom = 10;
 const locations = [
   {
-    title: 'Bridgeport Field Office',
+    title: 'Bridgeport Resource Center',
     address: '925 Housatonic Avenue',
     city: 'Bridgeport, CT 06606',
     geometry: {
@@ -23,7 +23,7 @@ const locations = [
     place_id: 'ChIJl9gQJYYO6IkRH2NNKPJqnr4'
   },
   {
-    title: 'Danbury Field Office',
+    title: 'Danbury Resource Center',
     address: '342 Main Street',
     city: 'Danbury, CT 06810',
     geometry: {
@@ -43,7 +43,7 @@ const locations = [
     place_id: 'ChIJ5aSEVGT_54kRoNybHkmC-TI'
   },
   {
-    title: 'Greater Hartford Field Office',
+    title: 'Greater Hartford Resource Center',
     address: '20 Meadow Road',
     city: 'Windsor, CT 06095',
     geometry: {
@@ -63,7 +63,7 @@ const locations = [
     place_id: 'ChIJ9Z6kp1RU5okRfgyY545LKwA'
   },
   {
-    title: 'Manchester Field Office',
+    title: 'Manchester Resource Center',
     address: '699 East Middle Turnpike',
     city: 'Manchester, CT 06040',
     geometry: {
@@ -83,7 +83,7 @@ const locations = [
     place_id: 'ChIJjdigBkxY5okRgL-oM8za1Ww'
   },
   {
-    title: 'Middletown Field Office',
+    title: 'Middletown Resource Center',
     address: '2081 South Main Street, Suite B',
     city: 'Middletown, CT 06457',
     geometry: {
@@ -103,7 +103,7 @@ const locations = [
     place_id: 'ChIJ26GEiGlK5okRTPXMAXujvnw'
   },
   {
-    title: 'New Britain Field Office',
+    title: 'New Britain Resource Center',
     address: '30 Christian Lane',
     city: 'New Britain, CT 06051-4152',
     geometry: {
@@ -123,7 +123,7 @@ const locations = [
     place_id: 'ChIJIRWGEAyz54kROxZ8lFLUmS0'
   },
   {
-    title: 'New Haven Field Office',
+    title: 'New Haven Resource Center',
     address: '50 Humphrey Street',
     city: 'New Haven, CT 06513',
     geometry: {
@@ -143,7 +143,7 @@ const locations = [
     place_id: 'ChIJGY8XP9rZ54kRSYzf2RrCyM0'
   },
   {
-    title: 'Norwich Field Office',
+    title: 'Norwich Resource Center',
     address: '401 West Thames Street',
     city: 'Norwich, CT 06360',
     geometry: {
@@ -163,7 +163,7 @@ const locations = [
     place_id: 'ChIJq7_XuEpy5okR04gArAvdS20'
   },
   {
-    title: 'Torrington Field Office',
+    title: 'Torrington Resource Center',
     address: '62 Commercial Boulevard',
     city: 'Torrington, CT 06790',
     geometry: {
@@ -183,7 +183,7 @@ const locations = [
     place_id: 'ChIJlb_mKbqY54kR564RqRpzPrA'
   },
   {
-    title: 'Stamford Field Office',
+    title: 'Stamford Resource Center',
     address: '1642 Bedford Street',
     city: 'Stamford, CT 06905',
     geometry: {
@@ -203,7 +203,7 @@ const locations = [
     place_id: 'ChIJ7z4tUeuhwokRVeY-o2FzoDs'
   },
   {
-    title: 'Waterbury Field Office',
+    title: 'Waterbury Resource Center',
     address: '249 Thomaston Avenue',
     city: 'Waterbury, CT 06702',
     geometry: {
@@ -223,7 +223,7 @@ const locations = [
     place_id: 'ChIJVRErv03A54kR_PeaRUf5tKM'
   },
   {
-    title: 'Willimantic Field Office',
+    title: 'Willimantic Resource Center',
     address: '1320 Main Street / Tyler Square',
     city: 'Willimantic, CT 06226',
     geometry: {
@@ -421,6 +421,11 @@ async function initMap() {
     });
 
     marker.addListener('click', () => {
+      handleMarkerClick(location, marker);
+    });
+
+    const title_link = document.getElementById('office-title-link-' + location.place_id);
+    title_link.addEventListener('click', () => {
       handleMarkerClick(location, marker);
     });
 
